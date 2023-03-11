@@ -32,3 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.messages-section').classList.remove('show');
     });
 });
+
+document.querySelector(".add-btn").addEventListener("click", function () {
+    
+});
