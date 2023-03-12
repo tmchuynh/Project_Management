@@ -5,44 +5,38 @@
 }
 
 :root {
-  --app-container: #f3f6fd;
-  --main-color: #1f1c2e;
-  --secondary-color: #4a4a4a;
-  --link-color: #1f1c2e;
-  --link-color-hover: #c3cff4;
-  --link-color-active: #fff;
-  --link-color-active-bg: #1f1c2e;
-  --projects-section: #fff;
-  --message-box-hover: #fafcff;
-  --message-box-border: #e9ebf0;
-  --more-list-bg: #fff;
-  --more-list-bg-hover: #f6fbff;
-  --more-list-shadow: rgba(209, 209, 209, 0.4);
-  --button-bg: #1f1c24;
-  --search-area-bg: #fff;
-  --star: #1ff1c2e;
-  --message-btn: #fff;
+  --app-container: #eceff7;
+  --main-color: #060707;
+  --secondary-color: #c6cbda;
+  --button-bg: #93adf0;
+  --gray: #3c3e42;
+  --link-color-hover: #575a5f;
+  --link-color-active: #d1d3da;
+  --link-color-active-bg: #0647eb;
+  
+  --projects-section: #c5ccd3;
+  --main-color-card: #ebedee;
+  --card-color: #0f0f0f;
+  --white: #e0e0e0;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.dark:root {
-  --app-container: #1f1d2b;
-  --app-container: #111827;
-  --main-color: #fff;
-  --secondary-color: rgba(255, 255, 255, 0.8);
-  --projects-section: #1f2937;
-  --link-color: rgba(255, 255, 255, 0.8);
-  --link-color-hover: rgba(195, 207, 244, 0.1);
-  --link-color-active-bg: rgba(195, 207, 244, 0.2);
-  --button-bg: #1f2937;
-  --search-area-bg: #1f2937;
-  --message-box-hover: #243244;
-  --message-box-border: rgba(255, 255, 255, 0.1);
-  --star: #ffd92c;
-  --light-font: rgba(255, 255, 255, 0.8);
-  --more-list-bg: #2f3142;
-  --more-list-bg-hover: rgba(195, 207, 244, 0.1);
-  --more-list-shadow: rgba(195, 207, 244, 0.1);
-  --message-btn: rgba(195, 207, 244, 0.1);
+[data-bs-theme="dark"] {
+  --app-container: #28292c;
+  --main-color: #8c9192;
+  --secondary-color: #46484d;
+  --button-bg: #7998e7;
+  --gray: #3c3e42;
+  --link-color-hover: #575a5f;
+  --link-color-active: #d1d3da;
+  --link-color-active-bg: #0647eb;
+  
+  --projects-section: #17191b;
+  --main-color-card: #2b2e30;
+  --card-color: #c5c5d3;
+  --white: #e0e0e0;
 }
 
 html,
@@ -155,49 +149,13 @@ a {
   background-color: transparent;
   border: none;
   padding: 0;
-  color: var(--main-color);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.search-wrapper {
-  border-radius: 20px;
-  background-color: var(--search-area-bg);
-  padding-right: 12px;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 480px;
-  color: var(--light-font);
-  box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
-  overflow: hidden;
-
-  .dark & {
-    box-shadow: none;
-  }
-}
-
-.search-input {
-  border: none;
-  flex: 1;
-  outline: none;
-  height: 100%;
-  padding: 0 20px;
-  font-size: 16px;
-  background-color: var(--search-area-bg);
-  color: var(--main-color);
-
-  &:placeholder {
-    color: var(--main-color);
-    opacity: 0.6;
-  }
-}
-
 .add-btn {
-  color: #fff;
+  color: var(--gray);
   background-color: var(--button-bg);
   padding: 0;
   border: 0;
@@ -258,7 +216,6 @@ a {
 
   &-link {
     color: var(--main-color);
-    color: var(--link-color);
     margin: 16px 0;
     transition: 0.2s;
     border-radius: 50%;
@@ -385,132 +342,6 @@ a {
   }
 }
 
-.messages-section {
-  flex-shrink: 0;
-  padding-bottom: 32px;
-  background-color: var(--projects-section);
-  margin-left: 24px;
-  flex: 1;
-  width: 100%;
-  border-radius: 30px;
-  position: relative;
-  overflow: auto;
-  transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
-
-  .messages-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 3;
-    border: none;
-    background-color: transparent;
-    color: var(--main-color);
-    display: none;
-  }
-
-  &.show {
-    transform: translateX(0);
-    opacity: 1;
-    margin-left: 0;
-  }
-
-  .projects-section-header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    padding: 32px 24px 0 24px;
-    background-color: var(--projects-section);
-  }
-}
-
-.message-box {
-  border-top: 1px solid var(--message-box-border);
-  padding: 16px;
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-
-  &:hover {
-    background-color: var(--message-box-hover);
-    border-top-color: var(--link-color-hover);
-
-    + .message-box {
-      border-top-color: var(--link-color-hover);
-    }
-  }
-
-  img {
-    border-radius: 50%;
-    object-fit: cover;
-    width: 40px;
-    height: 40px;
-  }
-}
-
-.message-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-
-  .name {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 700;
-    color: var(--main-color);
-    margin: 0;
-  }
-}
-
-.message-content {
-  padding-left: 16px;
-  width: 100%;
-}
-
-.star-checkbox {
-  input {
-    opacity: 0;
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
-
-  label {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-
-  .dark & {
-    color: var(--secondary-color);
-
-    input:checked + label {
-      color: var(--star);
-    }
-  }
-
-  input:checked + label svg {
-    fill: var(--star);
-    transition: 0.2s;
-  }
-}
-
-.message-line {
-  font-size: 14px;
-  line-height: 20px;
-  margin: 8px 0;
-  color: var(--secondary-color);
-  opacity: 0.7;
-
-  &.time {
-    text-align: right;
-    margin-bottom: 0;
-  }
-}
-
 .project-boxes {
   margin: 0 -8px;
   overflow-y: auto;
@@ -577,7 +408,6 @@ a {
 }
 
 .project-box {
-  --main-color-card: #dbf6fd;
   border-radius: 30px;
   padding: 16px;
   background-color: var(--main-color-card);
@@ -590,7 +420,7 @@ a {
     color: var(--main-color);
 
     span {
-      color: #4a4a4a;
+      color: var(--card-color);
       opacity: 0.7;
       font-size: 14px;
       line-height: 16px;
@@ -621,21 +451,6 @@ a {
   background-color: transparent;
   border: none;
   flex-shrink: 0;
-
-  /*&:after, &:before {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--main-color);
-    opacity: .8;
-    left: 50%;
-    transform: translatex(-50%);
-  }
-  
-  &:before { top: 0;}
-  &:after { bottom: 0; }*/
 }
 
 .more-wrapper {
@@ -665,7 +480,7 @@ a {
     height: 4px;
     border-radius: 6px;
     overflow: hidden;
-    background-color: #fff;
+    background-color: var(--white);
     margin: 8px 0;
   }
 
@@ -676,8 +491,8 @@ a {
     margin: 0;
   }
 
-  &-wrapper {
-  }
+  // &-wrapper {
+  // }
 
   &-percentage {
     text-align: right;
@@ -746,21 +561,6 @@ a {
 
 .mode-switch.active .moon {
   fill: var(--main-color);
-}
-
-.messages-btn {
-  border-radius: 4px 0 0 4px;
-  position: absolute;
-  right: 0;
-  top: 58px;
-  background-color: var(--message-btn);
-  border: none;
-  color: var(--main-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4px;
-  display: none;
 }
 
 @media screen and (max-width: 980px) {
@@ -855,6 +655,8 @@ a {
 
   .app-header {
     padding: 16px 10px;
+    font-family: 'Climate Crisis', cursive;
+    letter-spacing: 15px;
   }
 
   .search-input {
@@ -934,5 +736,13 @@ a {
   .project-boxes.jsListView .more-wrapper {
     right: 2px;
     top: 10px;
+  }
+}
+
+.modal {
+  width: 100%;
+  .modal-dialog {
+    width: 100%;
+    height: fit-content;
   }
 }

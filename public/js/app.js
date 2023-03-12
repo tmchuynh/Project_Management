@@ -1,38 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var modeSwitch = document.querySelector('.mode-switch');
+// element Tags
+const tag = document.querySelector('html');
+const themeBtn = document.querySelector('.mode-switch');
 
-    modeSwitch.addEventListener('click', function () {
-        document.documentElement.classList.toggle('dark');
-        modeSwitch.classList.toggle('active');
-    });
+// init theme 
+theme('dark');
 
-    var listView = document.querySelector('.list-view');
-    var gridView = document.querySelector('.grid-view');
-    var projectsList = document.querySelector('.project-boxes');
+//btn event
+themeBtn.addEventListener('click', () => {
+    if (tag.getAttribute('data-bs-theme') === 'dark') {
+        theme('light')
+    } else {
+        theme('dark')
+    }
+})
 
-    listView.addEventListener('click', function () {
-        gridView.classList.remove('active');
-        listView.classList.add('active');
-        projectsList.classList.remove('jsGridView');
-        projectsList.classList.add('jsListView');
-    });
-
-    gridView.addEventListener('click', function () {
-        gridView.classList.add('active');
-        listView.classList.remove('active');
-        projectsList.classList.remove('jsListView');
-        projectsList.classList.add('jsGridView');
-    });
-
-    document.querySelector('.messages-btn').addEventListener('click', function () {
-        document.querySelector('.messages-section').classList.add('show');
-    });
-
-    document.querySelector('.messages-close').addEventListener('click', function () {
-        document.querySelector('.messages-section').classList.remove('show');
-    });
-});
-
-document.querySelector(".add-btn").addEventListener("click", function () {
-    
-});
+// init theme function
+function theme(mode) {
+    if (mode === 'dark') {
+        tag.setAttribute('data-bs-theme', 'dark')
+        themeBtn.innerHTML = '<div class="btn btn-light"><i class="fa-solid m-2 fa-sun text-warning"></i></i>Light Mode</div>'
+    } else {
+        tag.setAttribute('data-bs-theme', 'light')
+        themeBtn.innerHTML = '<div class="btn btn-dark"><i class="fa-solid fa-moon m-2"></i>Dark Mode</div>'
+    }
+}
